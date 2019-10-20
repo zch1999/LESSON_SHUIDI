@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>爱了爱了</title>
+</head>
+<body>
+    <script>
+        // alert('sjkgjsdjl');
+        class Flower{
+            constructor(type,n){ //构造函数 new时运行
+                this.type=type;//属性
+                this.n=n;
+            }
+        }
+        var conghai={
+            name:'衷从海',
+            age:20,
+            favorites:['代码','电影','游戏'],
+            room:427,
+            isSingle:true,
+            yz:70,
+            sendflower:function(target){
+                var flower=new Flower('红玫瑰',99);
+                console.log(flower.type,flower.n);
+                target.receiveflower(this,flower);
+            }
+        }
+        var mingwei={
+            name:'桂铭蔚',
+            age:18,
+            hometown:'四川成都',
+            isgoodmod:false,//心情不好
+            receiveflower:function(sender,flower){
+                // if(sender.yz<90){
+                //     console.log('丑拒');
+                // }
+                // else{
+                //     console.log('万达走一波');
+                // }
+                if(!this.isgoodmod){
+                    console.log('丑拒，心情不好');
+                 }
+                 else{
+                     console.log('万达走一波');
+                 }
+                // console.log(sender,flower);
+            }
+        }
+        var yuxin={
+            hometown:'四川成都',
+            receiveflower:function(sender,flower){
+                // if(sender.name=='衷从海'){
+                //     console.log('高兴地送');
+                // }
+                // else{
+                setTimeout(function(){
+                   mingwei.isgoodmod=true;
+                    mingwei.receiveflower(sender,flower);},5000)
+                }
+        //    }
+        }
+        conghai.sendflower(yuxin);
+    </script>
+</body>
+</html>
