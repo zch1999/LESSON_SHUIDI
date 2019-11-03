@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 写一函数  -->
+  <script>
+    // S 12 
+    // A 6
+    // B 4
+    // C 2
+    // D 1 
+    // salary 
+  /*
+   * @param salary {number}
+   * @param type {string}
+   * @return {number}
+   */
+
+  window.onload = function() { 
+    //局部作用域  
+    function bonus (salary, type) {
+      let total = 0;
+      switch(type) {
+        case 'S':
+          total = salary*12 + salary*12;
+          break;
+        case 'A':
+          total = salary*12 + salary*6;
+          break;
+        case 'B':
+          total = salary*12 + salary*4;
+          break;
+        case 'C':
+          total = salary*12 + salary*2;
+          break;
+        case 'C':
+          total = salary*12 + salary;
+          break;
+
+      }
+      return total;
+    }
+
+    console.log(bonus(20000, 'A'))
+  }
+  
+  </script>
+  
+</body>
+</html>
