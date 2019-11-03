@@ -44,6 +44,6 @@ const unique=(arr) => {
 //     return res;
 // }
 var arr=['1',2,3,2,4,1];
-// console.log(unique(arr));
+console.log(unique(arr));
 console.log(typeof unique == 'function' && unique(arr));
 
