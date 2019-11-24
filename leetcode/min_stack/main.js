@@ -12,8 +12,9 @@ MinStack.prototype.push=function(x){
     return this.stack.push(x);
 }
 MinStack.prototype.pop=function(){
-    const item=this.stack.pop();
-    return item;
+    // const item=
+    this.stack.pop();
+    // return item;
 }
 MinStack.prototype.top=function(){
     return this.stack[this.stack.length-1];
@@ -26,7 +27,14 @@ MinStack.prototype.toString=function(){
 }
 var stack=new MinStack();
 stack.push(-2);
-stack.push(0);
+stack.push(-0);
 stack.push(-3);
 stack.pop();
+// stack.getMin();
 console.log(stack.getMin())
+// var stack=[];
+// stack.push(-2);
+// stack.push(0);
+// stack.push(-3);
+// stack.pop();
+// console.log(stack);
