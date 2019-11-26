@@ -19,7 +19,7 @@ Page({
       sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function(res){
         // success
-        // console.log(res);
+        console.log(res);
         const tempFilePaths = res.tempFilePaths
         for(let file of tempFilePaths)
         {
@@ -28,13 +28,14 @@ Page({
             cloudPath:randString,
             filePath:file,
             success: res=>{
-              // console.log(res);
+              console.log(res,'-----');
               photos.add({
                 data:{
-                  image:res.fielID
+                  image:res.fileID
                 }
               })
               .then(res=>{
+                console.log(res,'-----');
                 wx.showToast({
                   title:'上传成功',
                   icon:'success'
