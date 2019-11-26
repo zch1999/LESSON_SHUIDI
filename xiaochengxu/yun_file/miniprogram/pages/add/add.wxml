@@ -1,0 +1,1 @@
+<vant-button type="warning" block bindtap="upload">上传图片</vant-button>
