@@ -1,0 +1,17 @@
+{
+  "name": "try-redis",
+  "version": "1.0.0",
+  "description": "- Mysql 关系型\r   Mongodb NOSQL\r   redis 内存 kv\r   解决数据库的压力\r   MYSQL /post I/O\r   redis 被访问后的数据以k:v 保存在内存中\r   90%以上的SQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "redis": "^2.8.0"
+  }
+}
