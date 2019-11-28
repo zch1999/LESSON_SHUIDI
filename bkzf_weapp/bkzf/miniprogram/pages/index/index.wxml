@@ -1,0 +1,18 @@
+<!-- <view class="container">
+  <view class="page-body"> -->
+<!-- <van-search  value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search> -->
+<van-search class="sousuo" value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:search="onSearch">
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="true">
+        <block wx:for="{{imgUrls}}">
+          <swiper-item>
+            <image src="{{item}}" class="slider-image" width="355" height="150" bindtap="swipclick"></image>
+          
+          </swiper-item>
+        </block>
+</swiper>
+    <!-- </view>
+    </view> -->
