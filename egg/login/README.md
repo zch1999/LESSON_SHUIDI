@@ -12,3 +12,15 @@
     web开发 http协议
     router.js 配置路由-> controller (ctx.request.body)-> model
     {ctx}上下文环境
+
+- npm i sequelize-cli -D
+    -D devDependencies
+    开发阶段的依赖 mysql 的处理
+    创建表 
+    执行sql
+    sequelize-cli command-line 命令行
+
+- sequelize 命令行集锦
+    sequelize init  初始化mysql的工作目录
+        - config.json
+    sequelize db:create
