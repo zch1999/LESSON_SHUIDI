@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>饿了么商家</title>
+    <link rel="stylesheet" href="./common.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div id="root">
+        <div class="header">
+        <div class="content-wrapper">
+            <div class="avatar">
+                <img width="64" height="64" :src="seller.avatar" alt="" id="avatar">
+            </div>
+        </div>
+        </div>
+        <div>{{seller.name}}</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 页面就跟dom api  -->
+    <script>
+    new Vue({
+        el:'#root',
+        data:{
+            seller:{}
+        },
+        // 页面显示后 onload
+        mounted(){
+            // setTimeout(() => {
+            //     this.avatar = 'http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg'
+            // }, 2000);
+            //等着数据喂饱
+            fetch('http://localhost:3000/data')
+                .then(data=>data.json())
+                    .then(data=>{
+                        this.seller = data;
+                        // this.setData({})
+                        // console.log(data);
+                        // document.getElementById('avatar').src = data.avatar
+                    })
+        }
+    })
+    </script>
+</body>
+</html>
