@@ -13,3 +13,21 @@
 mvvm 优秀的地方在于 简单
 - 天生集成数据驱动 data {{}} :src
 - 页面是响应式的 数据变了，界面就会变
+
+
+- inline-block
+    inline 没有设置宽高的能力 两兄弟之间相安无事
+    block 兄弟间换行 
+    两列式布局 inline-block 副作用 兄弟间产生间隙
+    inline-block的天坑 换行\n
+    font-size 
+    父元素 font-size 0
+    换行元素首尾相连 影响结构的可读性
+
+- stylus 向css提供了函数功能
+    利用返回值的叫函数
+    要复用css代码 完成了css的模块化 mixin 混合
+
+- 图片，手机的屏幕像素
+    @media 条件 (-webkit-min-device-pixel-ration:3)
+    图片的命名  ...@2x.png ...@3x.png
