@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div>这家伙很懒，什么都没有留下</div> -->
+    <!-- 双击一下，文字，变成输入框 立即输入，回车
+    - 事件
+    - 状态的改变 DOM
+    - 本地存储
+    - 将这些整合起来 面向对象来封装处理 -->
+    <div id="profile"></div>
+<script>
+    //在线编辑
+    //封装内部的实现代码 
+    function EditInPlace(id,parent,value){
+        this.id=id;
+        this.value=value || 'default value';
+        this.parentElement = document.getElementById(parent);
+        //把节点显示到页面上
+        this.createElements();
+        this.attachEvents();
+    }
+    EditInPlace.prototype.attachEvents = function(){
+        // console.log(this.value);
+        this.staticElement.addEventListener('click', ()=>{
+            this.staticElement.style.display = 'none';
+            this.fieldElement.style.display = 'inline';
+            this.saveButton.style.display = 'inline';
+            this.cancelButton.style.display = 'inline';
+        },false);
+        this.saveButton.addEventListener('click',()=>{
+            var text = this.fieldElement.value;
+            this.value = text;
+            //本地存储
+            window.localStorage.setItem('profile',text);
+
+            this.staticElement.innerText = text;
+            this.convertToText();
+        })
+        this.cancelButton.addEventListener('click',()=>{
+            var text = this.staticElement.innerText;
+            this.fieldElement.value=text;
+            this.convertToText();
+        })
+    }
+    EditInPlace.prototype.convertToText = function(){
+        this.staticElement.style.display = 'inline';
+        this.fieldElement.style.display = 'none';
+        this.saveButton.style.display = 'none';
+        this.cancelButton.style.display = 'none';
+    }
+    EditInPlace.prototype.converEdit = function(){
+
+    }
+    //构造函数
+    EditInPlace.prototype.createElements = function(){
+        console.log(this.value);
+        this.containerElement = document.createElement('div');
+        this.parentElement.appendChild(this.containerElement);
+
+        this.staticElement = document.createElement('span');
+        this.staticElement.innerText = this.value;
+        this.containerElement.appendChild(this.staticElement);
+
+        this.fieldElement = document.createElement('input');
+        this.parentElement.type = 'text';
+        this.fieldElement.value = this.value;
+        this.fieldElement.style.display = 'none';
+        this.containerElement.appendChild(this.fieldElement);
+
+        this.cancelButton = document.createElement('input');
+        this.cancelButton.type = 'button';
+        this.cancelButton.value = 'cancel';
+        this.cancelButton.style.display = 'none';
+
+        this.saveButton = document.createElement('input');
+        this.saveButton.type = 'button';
+        this.saveButton.value = 'save';
+        this.saveButton.style.display = 'none';
+        this.containerElement.appendChild(this.saveButton);
+        this.containerElement.appendChild(this.cancelButton);
+    }
+    window.onload = function(){
+        var profile = localStorage.getItem('profile');
+        var profileEditor = new EditInPlace('titleClassical','profile',profile);
+    }
+</script>
+</body>
+</html>
