@@ -46,6 +46,8 @@
 *
   margin 0
   padding 0
+
+
 .tab
   display flex
   width 100%
