@@ -22,6 +22,7 @@ var reverseList = function(head) {
         const next = cur.next
         cur.next = pre
         pre = cur
+        console.log(pre)
         cur = next
     }
     return pre
