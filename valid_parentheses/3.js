@@ -26,9 +26,9 @@ var longestValidParentheses = function(s) {
                     tmpMax++;
                 }
             }
-        }
-        if (stack.length == 0) { //都匹配
-            max = max < tmpMax ? tmpMax : max;
+            if (stack.length == 0) { //都匹配
+                max = max < tmpMax ? tmpMax : max;
+            }
         }
         stack = [];
     }
