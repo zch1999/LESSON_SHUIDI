@@ -14,3 +14,11 @@
 - 服务器端
     如何将这些切片，合并成一个，并且能显示原来的图片
     stream 流 
+    可读流 可写流
+    chunk 都是一个二进制流文件
+    Promise.all 来包装每个chunk 的写入
+    start end fse.createWriteStream
+    每个chunk写入 先创建可读流，再pipe给可写流的过程
+    思路：以原文件作为文件夹的名字，在上传blobs到这个文件夹，且每个blob文件 都以文件-index的命名方式来存储
+
+- http并发上传大文件切片
