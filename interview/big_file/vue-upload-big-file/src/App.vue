@@ -4,6 +4,10 @@
       <input type="file" @change="handleFileChange">
       <el-button @click="handleUpload">上传</el-button>
     </div>
+    <div>
+      <div>计算文件hash</div>
+      <el-progress :percentage="hashPercentage"></el-progress>
+    </div>
   </div>
 </template>
 
@@ -22,9 +26,31 @@ export default {
       file: null,
       hash:"",
     },
-    status: Status.waiting
+    status: Status.waiting,
+    hashPercentage: 0
   }),
   methods:{
+     request({
+            url,
+            method = 'POST',
+            data,
+            headers = {},
+            requestList //上传的文件列表
+        }) {
+            return new Promise(resolve => {
+                const xhr = new XMLHttpRequest(); //js ajax对象
+                xhr.open(method, url); //请求
+                Object.keys(headers).forEach(key => {
+                    xhr.setRequestHeader(key, headers[key]) //请求加头
+                });
+                xhr.send(data);
+                xhr.onload = e => {
+                    resolve({
+                        data: e.target.response
+                    });
+                }
+            })
+        },
     async calculateHash(fileChunkList){
       return new Promise(resolve =>{
         //封装花时间的任务
@@ -35,7 +61,12 @@ export default {
         this.container.worker = new Worker("/hash.js");
         this.container.worker.postMessage({ fileChunkList });
         this.container.worker.onmessage = e =>{
-          console.log(e.data);
+          // console.log(e.data);
+          const { percentage, hash } = e.data;
+          this.hashPercentage = percentage;
+          if(hash){
+            resolve(hash);
+          }
         }
       })
     },
@@ -48,7 +79,27 @@ export default {
       const fileChunkList = this.createFileChunk(this.container.file);
       // console.log(fileChunkList)
       this.container.hash = await this.calculateHash(fileChunkList)
+      // console.log(this.container.hash)
+      // 文件 hash 同一个文件不用多次上传
+      const { shouldUpload, uploadedList } = await this.verifyUpload( //上传，验证
+        this.container.file.name,
+        this.container.hash
+      )
+      console.log(shouldUpload, uploadedList)
     },   
+    async verifyUpload(filename, fileHash){
+      const { data } = await this.request({
+        url: 'http://localhost:3000/verify',
+        headers:{
+          "content-type": "application/json"
+        },
+        data: JSON.stringify({
+          filename,
+          fileHash
+        })
+      })
+      return JSON.parse(data)
+    },
     //es6的特性你如何结合？ 少传这个参数 
     createFileChunk(file, size=SIZE){
       const fileChunkList = [];
