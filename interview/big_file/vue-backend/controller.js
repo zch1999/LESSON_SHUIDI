@@ -1,7 +1,8 @@
 const path = require('path');
 const fse = require('fs-extra')
+const multiparty = require('multiparty')
 
-const UPLOAD_DIR = path.resolve(__dirname, "../../big_file_upload", "target")
+const UPLOAD_DIR = path.resolve(__dirname, "..", "target")
 
 const extractExt = filename => filename.slice(filename.lastIndexOf("."), filename.length)
 
@@ -44,5 +45,36 @@ module.exports = class {
                 })
             )
         }
+    }
+    async handleFormData(req, res) {
+        //带有文件上传的表单
+        const multipart = new multiparty.Form();
+        multipart.parse(req, async(err, fields, files) => {
+            if (err) {
+                console.log(err);
+                res.status = 500;
+                res.end("process file chunk failed")
+                return
+            }
+            const [chunk] = files.chunk;
+            const [hash] = fields.hash;
+            const [fileHash] = fields.fileHash;
+            const [filename] = fields.filename;
+            // console.log(chunk, hash, fileHash, filename)
+            const filePath = path.resolve(UPLOAD_DIR, `${fileHash}${extractExt(filename)}`);
+            console.log(filePath)
+            console.log(fse.existsSync(filePath))
+            const chunkDir = path.resolve(UPLOAD_DIR, fileHash)
+            if (fse.existsSync(filePath)) {
+                res.end("file exist")
+                return
+            }
+
+            if (!fse.existsSync(chunkDir)) {
+                //目录地址是否存在
+                await fse.mkdirs(chunkDir)
+            }
+            await fse.move(chunk.path, path.resolve(chunkDir, hash))
+        })
     }
 }
