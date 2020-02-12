@@ -74,7 +74,8 @@ module.exports = class {
                 //目录地址是否存在
                 await fse.mkdirs(chunkDir)
             }
-            await fse.move(chunk.path, path.resolve(chunkDir, hash))
+            await fse.move(chunk.path, path.resolve(chunkDir, hash));
+            res.end("received file chunk");
         })
     }
 }

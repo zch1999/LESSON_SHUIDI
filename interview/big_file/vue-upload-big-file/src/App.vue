@@ -36,12 +36,14 @@ export default {
             url,
             method = 'POST',
             data,
+            onProgress= e => e,
             headers = {},
             requestList //上传的文件列表
         }) {
             return new Promise(resolve => {
                 const xhr = new XMLHttpRequest(); //js ajax对象
                 xhr.open(method, url); //请求
+                xhr.upload.onprogress = onProgress;
                 Object.keys(headers).forEach(key => {
                     xhr.setRequestHeader(key, headers[key]) //请求加头
                 });
@@ -134,7 +136,12 @@ export default {
       await Promise.all(requestList);
       console.log('可以发送合并请求了')
     },
-    createProgressHandler(){},
+    createProgressHandler(item){
+      return e => {
+        item.percentage = parseInt(String(e.loaded/e.total)*100);
+        console.log(e.loaded,e.total)
+      }
+    },
     async verifyUpload(filename, fileHash){
       const { data } = await this.request({
         url: 'http://localhost:3000/verify',
