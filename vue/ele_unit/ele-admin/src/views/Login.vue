@@ -145,7 +145,7 @@ export default {
 // - 帧
 // form-fade-leave true false opacity 1 translate3d(0, 0px, 0)
 // opacity 0 translate3d(0, -50px, 0)
-.form-fade-enter, .form-fade-leave-active
+.form-fade-enter, .form-fade-leave-to
   transform translate3d(0, -50px, 0)
   opacity 0 
 </style>
