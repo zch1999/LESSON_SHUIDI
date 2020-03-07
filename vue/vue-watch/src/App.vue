@@ -1,68 +1,76 @@
 <template>
   <div id="app">
-    <p>{{message}}</p>
-    <p> 大写 {{ message | capitalize }}</p>
-    <p> 逆序 {{ reverseMessage }}</p>
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    <p>Capitalized {{message | capitalize}}</p>
     <div id="watch-example">
       <p>
-        Ask a yes/no question
-        <input v-model="question" @input="askQuestion" />
+        Ask a yes/no question:
+        <input v-model="question">
       </p>
       <p>{{answer}}</p>
     </div>
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios' //vue 的请求库
-import _ from 'lodash'
-
+// import HelloWorld from './components/HelloWorld.vue'
+import _ from 'lodash';
+import axios from 'axios';
+// console.log(_.debounce);
 export default {
   name: 'App',
-  components: {
-  },
-  computed:{
-    reverseMessage(){
-      return this.message.split('').reverse().join('')
-    }
-  },
   filters: {
-    capitalize(word){
+    capitalize(word) {
       return word.toUpperCase()
     }
   },
-  methods:{
-    askQuestion(){
-      axios
-        .get('https://yesno.wtf/api')
-        .then(response =>{
-          console.log(response)
-          this.answer = response.data.answer
-        })
-    },
-    getAnswer(){
-    },
-    debouncedGetAnswer(){
-      _.debounce(this.askQuestion.bind(this))
-    }
-  },
-  data(){
+  data() {
     return {
       message: 'Hello',
       question: '',
-      answer: 'i cannot give you an answer util you ask a question!'
+      answer: 'I cannot give you an answer until you ask a question!'
+    }
+  },
+  computed: {
+    // 计算属性的 getter
+    reversedMessage: function () {
+      // `this` 指向 vm 实例
+      return this.message.split('').reverse().join('')
     }
   },
   watch: {
-    question: function(newQuestion, oldQuestion){
-      // console.log(newQuestion,oldQuestion)
-      // this.answer = 'wait for you to stop '
-      // this.askQuestion()
-      this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+    question: function(newQuestion, oldQuestion) {
+      this.answer = 'Waiting for you to stop typing...'
+      this.debouncedGetAnswer()
     }
+  },
+  methods: {
+    debouncedGetAnswer() {
+      console.log('aaa');
+    }, 
+    getAnswer() {
+      if (this.question.indexOf('?') === -1) {
+        this.answer = 'Questions usually contain a question mark. ;-)'
+        return
+      }
+      this.answer = 'Thinking...'
+      axios
+        .get('https://yesno.wtf/api')
+        .then(response => {
+          this.answer = _.capitalize(response.data.answer) 
+        })
+        .catch(error => {
+          this.answer = 'Error! Could not reach the API. ' + error
+        })
+    }
+  },
+  created: function() {
+    // console.log(_.debounce);
+    this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+  },
+  components: {
+    // HelloWorld
   }
 }
 </script>
