@@ -1,0 +1,20 @@
+{
+  "name": "@zch1999/oceanui",
+  "version": "0.1.1",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name oceanui --dest lib packages/index.js"
+  },
+  "description": "An study UI design language and Vue components implementation",
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "main": "lib/oceanui.umd.min.js"
+}
