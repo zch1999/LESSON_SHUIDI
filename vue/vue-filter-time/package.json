@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@zch1999/ocean_ui": "^0.1.0",
+    "@zch1999/oceanui": "^0.1.1",
     "core-js": "^3.6.4",
     "moment": "^2.24.0",
     "vue": "^2.6.11",
