@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>小米</title>
+        <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
+    </head>
+    <style>
+        body{
+            background-color: rgba(128, 128, 128, 0.18);
+        }
+       .body{
+           width: 1226px;
+           margin: 0 auto;
+
+       }
+       .title{
+           position: relative;
+           height: 58px;
+
+       }
+        .title-left{
+            float: left;
+            margin: 0;
+            font-size: 22px;
+            font-weight: 200;
+            line-height: 58px;
+            color: #333;
+        }
+        .title-right{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size:0;
+
+        }
+        .a{
+            display: inline-block;
+            font-size: 16px;
+            line-height: 58px;
+            color: #424242;
+            text-decoration: none;
+            margin:0px 20px ;
+            user-select: none;
+            cursor: pointer;
+        }
+        .span4{
+            float: left;
+        }
+        .span16{
+            float: left;
+            width: 978px;
+        }
+        .list{
+            list-style: none;
+            float: left;
+            width: 234px;
+            height: 260px;
+            padding: 20px 0;
+            text-align: center;
+            background-color: #fff;
+            margin: 0px 5px 5px;
+            transition: all .2s linear;
+        }
+        .list:hover{
+            transform: translateY(-2px);
+            box-shadow:10px 10px 5px #00000027;
+        }
+        p{
+         height: 16px;
+        }
+    </style>
+    <body>
+        <div class="body">
+            <div class="title">
+                <h2 class="title-left">手机</h2>
+                <div class="title-right">
+                    <div class="a first">热门</div>
+                    <div class="a second">其他</div>
+                </div>
+            </div>
+            <div class="span4">
+                <img src="1.webp" width="234px" height="614px">
+            </div>
+            <div class="span16">
+                 <div class="list">
+                   <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                 </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+                <div class="list">
+                    <img src="2.webp" width="160px" height="160px">
+                    <p>小米10</p>
+                    <p style="color:#b0b0b0">骁龙865/1亿像素相机</p>
+                    <p style="color: red">3999元起</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+            let first=document.querySelector(".first");
+            let second=document.querySelector(".second");
+            let action1=function(){
+                first.style.color = 'red'
+                second.style.color = 'black'
+            }
+            let action2=function(){
+                second.style.color= 'red'
+                first.style.color= 'black'
+            }
+            first.addEventListener("mouseover",action1,false);
+            second.addEventListener("mouseover",action2,false);
+        // })()
+    </script>
+</html>
