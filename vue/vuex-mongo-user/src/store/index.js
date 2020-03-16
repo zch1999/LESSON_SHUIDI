@@ -49,12 +49,12 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getUsers(state){
-      return state.users.map((user,index) => {
-        user.id = user.adress.city + user.adress.pincode
-        return user
-      })
-    }
+    // getUsers(state){
+    //   return state.users.map((user,index) => {
+    //     user.id = user.adress.city + user.adress.pincode
+    //     return user
+    //   })
+    // }
   },
   modules: {
   }

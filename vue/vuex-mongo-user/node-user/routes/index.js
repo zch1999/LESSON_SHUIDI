@@ -1,7 +1,7 @@
 const express = require('express');
 const user = express.Router();
 const db = require('../db/db.js');
-const User = require('../models/user.js');
+const User = require('../model/user.js');
 
 user.get('/', async(req, res) => {
   User // mongoose 
