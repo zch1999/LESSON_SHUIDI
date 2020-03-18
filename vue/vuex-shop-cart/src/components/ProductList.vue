@@ -4,9 +4,11 @@
       <!-- {{this.$store.state.product.all}} -->
       <li 
         v-for="pro in product" :key="pro.id">
-        {{pro.title}} - {{pro.price}}
+        {{pro.title}} - {{pro.price}} - {{pro.inventory}}
         <br>
-        <button @click="addProductToCart(pro)">
+        <button 
+          :disabled="!pro.inventory"
+          @click="addProductToCart(pro)">
             add to cart
         </button>
       </li>
@@ -32,6 +34,8 @@ export default {
 }
 </script>
 
-<style lang='stylus' scoped>
-
+<style>
+  [disabled]{
+    cursor: not-allowed
+  }
 </style>
