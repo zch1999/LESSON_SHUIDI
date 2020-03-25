@@ -31,23 +31,36 @@ for (let i = 0;  i < count; i++) {
 // GET 
 // new RegExp("\d+")   /\d+/
 Mock.mock(new RegExp('/vue-element-admin/article/list'), 'get', (config) => {
-  console.log(config);
+  // console.log(config);
   // list 根据params 分页
-  const { page = 1, limit = 20, title } = param2Obj(config.url)
-  // console.log(page, limit);
+  const { page = 1, limit = 20, title, author } = param2Obj(config.url)
+  // console.log(page, limit, title, author);
   // title , 重要性 ， 时间， 状态查询
   let mockList = list.filter(item => {
     // 条件一个个加，
-    if (title && item.title.indexOf(title) < 0) return false;
+    // console.log(item.title.indexOf(title))
+    if (title && item.title.indexOf(title) < 0 ) return false;
     // .......
     return true;
   });
 
-  const pageList =  mockList.filter((item, index) => 
+  let authorList = mockList.filter(item => {
+    // 条件一个个加，
+    // console.log(item.title.indexOf(title))
+    if (author && item.author.indexOf(author) < 0) return false;
+    // .......
+    return true;
+  });
+  authorList.sort((a,b) => a-b)
+
+  console.log(authorList)
+
+  const pageList =  authorList.filter((item, index) => 
   index < limit *page && index >= limit *(page-1));//某页数据 
+  // console.log(list)
   return {
     list:pageList, 
-    total: mockList.lengths
+    total: authorList.length
   }
 })
 
