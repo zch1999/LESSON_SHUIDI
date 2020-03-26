@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            .header{
+                padding: 0 40px;
+                height: 70px;
+                position: relative;
+                z-index: 2;
+                overflow: hidden;
+            }
+            .header_logo{
+                position: absolute;
+                top: 20px;
+                left: 40px;
+                height: 40px;
+            }
+            .header_161logo{
+                display: block;
+                width: 144px;
+                height: 32px;
+                background: url("下载.png") 50% no-repeat;
+                background-size:100%;
+            }
+            .headerTitle{
+                text-align: center;
+                margin: 0;
+                position: absolute;
+                display: block;
+                top: 20px;
+                left: 204px;
+                font-size: 16px;
+                height: 30px;
+                line-height: 30px;
+                width: 156px;
+                border-left: 1px solid #ccc;
+                color: #888;
+            }
+            .main{
+                position:relative;
+                height: 640px;
+                min-width:1100px;
+                background-color: rgb(220, 212, 207);
+            }
+            .main_inner{
+                background-image: url("promPic.jpg");
+                background-repeat: no-repeat;
+                background-position: top;
+                width: 100%;
+                height: 640px;
+            }
+            .main_inner_wrap{
+                width: 1100px;
+                margin: 0 auto;
+                position: relative;
+            }
+            .login{
+                width: 400px;
+                height: 540px;
+                top: 50px;
+                right: 50px;
+                position: absolute;
+                text-align: left;
+                z-index: 2;
+                background: #fff;
+            }
+            .photo{
+                position: absolute;
+                right: 12px;
+                top: 12px;
+                width: 46px;
+                height: 46px;
+                z-index: 2;
+                cursor: pointer;
+            }
+            .new_photo{
+                display: inline-block;
+                vertical-align: center;
+                width: 50px;
+                height: 50px;
+                background: url("ewm.png") 50% no-repeat;
+                background-size: 100%;
+            }
+            .login_form{
+                height: 100%;
+                padding: 0;
+                position: relative;
+            }
+            .login_form h2{
+                padding: 25px 0 0;
+                color: #333;
+                font-size: 20px;
+                line-height: 28px;
+                text-align: center;
+            }
+            .login_wrap{
+
+            }
+            .tex{
+                width: 340px;
+                height: 46px;
+                z-index: 19;
+                position: relative;
+                margin:60px auto  0;
+                border: 1px solid #c5cddb;
+                background: #fff;
+                font-size: 12px;
+                line-height: 44px;
+            }
+            .use{
+                float: left;
+                width: 21px;
+                text-align: center;
+                padding: 5px;
+            }
+            .tex input{
+                float: left;
+                width: 206px;
+                height: 44px;
+                line-height: 44px;
+                padding-left: 5px;
+                border: none;
+                outline: none;
+            }
+            .tex span{
+                text-align: center;
+                overflow: hidden;
+                height: 33px;
+                line-height: 33px;
+                font-size: 16px;
+            }
+            .ff{
+                color: gray;
+            }
+            .one{
+                margin: 20px auto 0;
+            }
+            .m_unlogin{
+                margin:20px auto 0;
+                width: 340px;
+                height: 16px;
+            }
+            .b_unlogin{
+                float: left;
+                width: 110px;
+
+            }
+            .b_unlogin span{
+                float: left;
+                width: 16px;
+                height: 16px;
+                border: 1px solid #D0D0D0;
+                background-position: 0;
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+            .b_unlogin span input:focus{
+                background-image: url("ico-checked.png");
+
+            }
+            .b_unlogin span input{
+                width: 14px;
+                height: 14px;
+                padding: 0;
+                opacity: 0;
+            }
+            .b_unlogin  p{
+                float: left;
+                font-size: 14px;
+                color: #999;
+                line-height: 18px;
+                margin: 0;
+                padding-left: 8px;
+            }
+            .forget{
+                text-decoration: none;
+                font-size: 14px;
+                float: right;
+            }
+            .btn{
+                width: 340px;
+                height: 50px;
+                line-height: 50px;
+                margin: 20px auto 0;
+            }
+            .btn input{
+                width: 100%;
+                height: 100%;
+                border: none;
+                color: #fff;
+                font-size: 18px;
+                background-color: rgba(0, 0, 255, 0.58);
+            }
+            .new{
+                margin-top: 10px;
+                text-align: center;
+            }
+            .new a{
+                text-decoration: none;
+                color: #3B78DD;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            .mailapp{
+                position: absolute;
+                background-color: #fafafa;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                border-radius: 0 0 4px 4px;
+            }
+            .mailapp a{
+                display: block;
+                width: 340px;
+                height: 40px;
+                margin: 16px auto 0;
+                background-image: url("mail.png");
+                background-repeat: no-repeat;
+                -webkit-background-size: contain;
+                background-size: contain;
+            }
+
+            .tab-2{
+                display: none;
+            }
+            .photo1{
+                display: inline-block;
+                vertical-align: middle;
+                width: 50px;
+                height: 50px;
+                background-size:100% 100%;
+                background: url("dn.png") 50% no-repeat;
+                background-size:100% 100%;
+            }
+            .mphoto{
+                width: 128px;
+                height: 128px;
+                margin: 100px auto 0;
+            }
+            .mphoto img{
+                text-align: center;
+                width: 128px;
+                height: 128px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="header_logo">
+                <div class="header_161logo"></div>
+            </div>
+            <p class="headerTitle">中国邮箱第一品牌</p>
+        </div>
+        <div class="main">
+            <div class="main_inner">
+                <div class="main_inner_wrap">
+
+                    <!--    表格1      -->
+
+                    <div class="login tab-2">
+                        <div class="photo">
+                            <div class="new_photo"></div>
+                        </div>
+                        <div class="login_form">
+                            <h2>邮箱账号登录</h2>
+                            <div class="login_wrap">
+                                <div class="tex">
+                                    <div class="use">
+                                        <i class="fa fa-user-o  fa-2x ff"></i>
+                                    </div>
+                                    <input type="text" placeholder="邮箱账号或手机密码">
+                                    <span>@163.com</span>
+                                </div>
+                                <div class="tex one">
+                                    <div class="use">
+                                        <i class="fa fa-lock fa-2x ff"></i>
+                                    </div>
+                                    <input type="password" placeholder="输入密码">
+                                    <span></span>
+                                </div>
+                                <div class="m_unlogin">
+                                    <div class="b_unlogin">
+                                        <span id="sp">
+                                            <input type="checkbox">
+                                        </span>
+                                        <p>十天内免登录</p>
+                                    </div>
+                                    <a class="forget" href="javascript:;">忘记密码?</a>
+                                </div>
+                                <div class="btn">
+                                    <input type="button" value="登  录">
+                                </div>
+                                <div class="new">
+                                    <a href="" target="_blank">注册新账号</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mailapp">
+                            <a href=""></a>
+                        </div>
+                    </div>
+
+                    <!--    表格2      -->
+                    <div class="login tab-1">
+                        <div class="photo">
+                            <div class="photo1"></div>
+                        </div>
+                        <div class="login_form">
+                            <h2>手机扫描 安全登录</h2>
+                            <div class="mphoto">
+                                <img src="getUrlQrcode.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="mailapp">
+                            <a href=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            //点击chechbox勾选按钮
+            let sp = document.getElementById('sp');
+            let action = function(){
+                if(!sp.style.backgroundImage) {
+                    console.log('jjjjjjj')
+                    sp.style.backgroundImage= 'url("ico-checked.png")';
+                }
+                else{
+                    sp.style.backgroundImage= ''
+                }
+            }
+            sp.addEventListener('click',action,false);
+
+            // 换界面
+            let one = document.querySelector('.photo1');
+            let two = document.querySelector('.new_photo');
+            let tab1 = document.querySelector('.tab-1');
+            let tab2 = document.querySelector('.tab-2');
+            let action1 = function(){
+                tab1.style.display='none'
+                tab2.style.display= 'block'
+            }
+            let action2 = function(){
+                tab2.style.display='none'
+                tab1.style.display= 'block'
+            }
+            one.addEventListener('click',action1,false);
+            two.addEventListener('click',action2,false);
+        </script>
+    </body>
+</html>
