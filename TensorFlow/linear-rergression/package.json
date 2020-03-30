@@ -1,0 +1,16 @@
+{
+  "name": "linear-rergression",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.7.1",
+    "@tensorflow/tfjs-vis": "^1.4.0"
+  }
+}
