@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul{
+                list-style: none;
+            }
+            li{
+                list-style: none;
+            }
+            body{
+                background-color: #e5e5e5;
+            }
+            .top{
+                position: relative;
+                width: 1000px;
+                height: 500px;
+                border: 1px solid red;
+                margin: 100px auto;
+            }
+            .photo{
+                width:1000px;
+                height: 500px;
+                background-color:#fff ;
+            }
+            .photo img{
+                width:100%;
+                height: 100%;
+            }
+            .focus{
+                position: absolute;
+                top: 50%;
+                left: 0;
+                width: 1000px;
+                display: none;
+            }
+            .top:hover .focus{
+                display: block;
+            }
+            .focus span{
+                display: inline-block;
+                width: 25px;
+                font-size: 24px;
+                height: 30px;
+                color: #ccc;
+                line-height: 30px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.3);
+                cursor: pointer;
+                user-select: none;
+            }
+
+            #left{
+                float: left;
+            }
+            #right{
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+       <div class="top">
+           <div class="photo">
+                <ul>
+                    <li><img src="1.jpg" alt=""></li>
+                </ul>
+           </div>
+           <div class="focus">
+               <span id="left">&lt;</span>
+               <span id="right">&gt;</span>
+           </div>
+       </div>
+
+       <script>
+
+       </script>
+    </body>
+</html>
