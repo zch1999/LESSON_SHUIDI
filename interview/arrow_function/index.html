@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数里的super</title>
+</head>
+<body>
+    <script>
+        var obj1 = {
+            sayhello(){
+                console.log('父类的hello')
+            }
+        }
+        var obj2 = {
+            sayhello(){
+                super.sayhello();
+                console.log('子类的hello')
+            }
+        }
+        // es6 Object对象的新方法
+        Object.setPrototypeOf(obj2,obj1)
+        obj2.sayhello();
+    </script>
+</body>
+</html>

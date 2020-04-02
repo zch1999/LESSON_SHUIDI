@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const Person= function(name){
+            if(new.target != undefined){
+                this.name = name
+            }else{
+                throw new Error('必须使用new 才能生成构造函数')
+            }
+            
+        }
+        Person.prototype.sayName = function() {
+            console.log(`我是${this.name}`)
+        }
+        // Person('李广')
+        let li = new Person('李广')
+        console.log(li.name)
+        li.sex = "man"
+        console.log(li)
+
+        var o = Object()
+        console.log(o.__proto__ == Object.prototype)
+    </script>
+</body>
+</html>
