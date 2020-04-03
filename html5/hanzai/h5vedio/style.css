@@ -1,0 +1,53 @@
+  
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    /* 第三种水平垂直居中布局方法 */
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 因为图片加载需要时间 所以可以设置与背景图片类似的颜色 以优化用户体验 #4c4c4c */
+    background: #4c4c4c url('https://unsplash.it/1500/900?image=1021');
+    background-size: cover;
+}
+
+.wrapper{
+    width: 850px;
+    display: flex;
+}
+/* 父容器设为flex 弹性布局,两个子盒子中 flex都设为1 子盒子等比继承父容器的空间   */
+/* video 标签有底线 所以这里无法平分 */
+video{
+    /* 透明度 0.1  */
+    box-shadow: 0 0 1px 3px rgb(0,0,0,0.1);
+}
+
+.speed{
+    background: #efefef;
+    flex:1;
+    display:flex;
+    /* 设置y轴 的 布局 */
+    align-items:flex-start;
+    margin: 10px;
+    border-radius: 50px;
+    box-shadow: 0 0 1px 3px rgb(0,0,0,0.1);
+    /* 超出则隐藏 */
+    overflow: hidden;
+}
+
+.speed-bar{
+    width: 100%;
+    height: 16.3%;
+    /* 渐变色 */
+    background:linear-gradient(-17deg,#2376ae 0%,#c16ecf 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow:  2px 2px 2px black;
+    /* 鼠标移动变成小手 */
+    cursor: pointer;
+}
