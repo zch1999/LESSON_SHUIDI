@@ -1,0 +1,180 @@
+/* 元素有些默认属性， 我们将它重置掉 css reset 工作流程 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* css 继承 */
+    font-size: 0.28rem;
+    line-height: 1.5;
+    /* CSS3属性-webkit-font-smoothing字体抗锯齿渲染 */
+    -webkit-font-smoothing: antialiased
+}
+
+img {
+    max-width: 100%;
+}
+
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+.poi-item-wrapper {
+    background-color: #fff;
+    padding: 0.24rem 0 0 0.3rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.poi-item-wrapper .poi-info-wrapper {
+    display: flex;
+}
+
+.poi-item-wrapper .image-wrapper {
+    position: relative;
+    margin-top: 0.05rem;
+    width: 1.6rem;
+    height: 1.61rem;
+}
+
+.poi-item-wrapper .poi-info {
+    margin-left: 0.18rem;
+    /* 弹性布局 */
+    flex: 1;
+}
+
+.poi-item-wrapper .poi-info .price-wrapper {
+    position: relative;
+    height: 0.40rem;
+    font-size: 0.24rem;
+    margin-top: 0.06rem;
+    /* 超出隐藏 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.poi-item-wrapper .poi-info .delivery-wrapper{
+    position: relative;
+    height: 0.40rem;
+    /* 设置行间距离 行高 */
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    margin-top: 0.02rem;
+    /* 超出隐藏 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+.poi-item-wrapper .poi-info .reduction-wrapper {
+    position: relative;
+    height: 0.40rem;
+    margin-top: 0.02rem;
+}
+.poi-item-wrapper .poi-info .discount-wrapper{
+    position: relative;
+    height: 0.40rem;
+    margin-top: 0.02rem;
+}
+
+ .price-img{
+    position: absolute;
+    margin-top: 0.01rem;
+    margin-bottom: 0.01rem;
+    width: 0.38rem;
+    height: 0.38rem;
+
+}
+
+.dire{
+    margin-left: 9%;
+    width: 80%;
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    margin-top: 0.02rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.score {
+    position: absolute;
+    left: 28%;
+    margin-top: 0.035rem;
+    margin-bottom: 0.035rem;
+    height: 0.33rem;
+    line-height: 0.33rem;
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    color:rgb(255, 153, 0);
+    letter-spacing: 0.2px;
+}
+
+.amount{
+    position: absolute;
+    left: 36%;
+    margin-top: 0.035rem;
+    margin-bottom: 0.035rem;
+    height: 0.33rem;
+    line-height: 0.33rem;
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    color: #666666;
+    letter-spacing: 0.2px;
+}
+
+.time {
+    position: absolute;
+    left: 67%;
+    margin-top: 0.035rem;
+    margin-bottom: 0.035rem;
+    height: 0.33rem;
+    line-height: 0.33rem;
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    color: #666666;
+    letter-spacing: 0.0001rem;
+}
+
+.poi-item-wrapper .poi-info .location {
+    position: absolute;
+    right: 0.15rem;
+    text-align: right;
+    margin-top: 0.035rem;
+    margin-bottom: 0.035rem;
+    height: 0.33rem;
+    line-height: 0.33rem;
+    font-size: 0.24rem;
+    font-family: PingFangSC-Regular;
+    color: #666666;
+    letter-spacing: 0.2px;
+}
+
+.vote-star {
+    position: absolute;
+    /* transform-origin: 0 0 设置旋转元素的基点位置： */
+    transform-origin: 0% 0%;
+    transform: scale(0.15,0.15);
+    display: inline-block;
+    /*内联元素转换成块元素，并不换行*/
+    margin-top: 0.035rem;
+    margin-bottom: 0.035rem;
+    width: 10rem;
+    /*5个星星的宽度*/
+    height: 2rem;
+    /*1个星星的高度*/
+    overflow: hidden;
+    vertical-align: middle;
+    background: url("./material/2.png") repeat-x;
+}
+
+.vote-star i {
+    display: inline-block;
+    /*内联元素转换成块元素，并不换行*/
+    height: 2rem;
+    /*1个星星的高度*/
+    background: url("./material/1.png") repeat-x 00;
+}
