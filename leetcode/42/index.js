@@ -1,31 +1,19 @@
 var trap = function(height) {
-    let rain = 0
-    let temporary = 0
-    let drop = 0
-        for(let i =0; i< height.length-1;){
-            for(let j =i+1; j< height.length;){
-                drop = height[i] - height[j]
-                // console.log(drop)
-                if(drop >0){
-                    temporary += drop
-                    j++ 
-                }else{
-                    rain += temporary
-                    i=j
-                    temporary = 0
-                    break
-                }
-                if(j == height.length && drop> 0){
-                    i++
-                    temporary = 0
-                    break;
-                }
-            }
-            // console.log('rain:',rain)
-            // console.log('暂存',temporary)
+    let left = 0, right = height.size() - 1;
+    let ans = 0;
+    let left_max = 0, right_max = 0;
+    while (left < right) {
+        if (height[left] < height[right]) {
+            height[left] >= left_max ? (left_max = height[left]) : ans += (left_max - height[left]);
+            ++left;
         }
-    return rain
-};
+        else {
+            height[right] >= right_max ? (right_max = height[right]) : ans += (right_max - height[right]);
+            --right;
+        }
+    }
+    return ans;
+}
 
 const height = [0,1,0,2,1,0,1,3,2,1,2,1]
 console.log(trap(height))
