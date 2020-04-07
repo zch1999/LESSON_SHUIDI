@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function foo() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(123)
+                },2000)
+            })
+        }
+        function* test(){
+            console.log('start')  // 分块 console.log() 和 yield foo()是一块
+            let a = yield foo();
+            console.log('a', a)
+            let b = yield 2;
+            console.log('b', b)
+            console.log('end')
+        }
+        console.log(test.prototype)
+        // let a = test()
+        // console.log(a.next())
+        // console.log(a.next())
+        // console.log(a.next())
+
+        function generateAutoRun(gen){
+            let g = gen();
+            function next(value){
+                let res = g.next(value)
+                console.log(res)
+                if(res.done) return;
+                next(res.value)
+            }
+            next()
+        }
+        generateAutoRun(test)
+    </script>
+</body>
+</html>
