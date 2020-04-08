@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id='btn'>发送ajax</button>
+    <script> 
+      btn.addEventListener('click',()=>{
+        doRequest()
+      })
+      // 发送请求
+      function doRequest(){
+        // 。。。请求处理  
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET','http://localhost:3000/user',true)
+        // todo请求设置
+        xhr.responseType = 'json'; // 设置服务器的响应类型
+        xhr.onload = function(){console.log(xhr.response)}
+        xhr.send()
+      }
+    </script>
+</body>
+</html>
