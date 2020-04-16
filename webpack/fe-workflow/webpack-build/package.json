@@ -5,16 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development node build/dev.js",
-    "build": "cross-env NODE_ENV=production node build/duild.js"
+    "build": "cross-env NODE_ENV=production node build/build.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.2"
-  },
-  "devDependencies": {
-    "ora": "^4.0.3",
-    "rimraf": "^3.0.2"
   }
 }
