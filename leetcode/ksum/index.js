@@ -40,6 +40,6 @@ var ksum = function(data, n, sum) {
    * }
    */
   // [1, 2, 3, 4, 5, 7]
-const data = [1,2,3,4,5]
+// const data = [1,2,3,4,5]
 
-nsum(data,3,6)
+// nsum(data,3,6)
