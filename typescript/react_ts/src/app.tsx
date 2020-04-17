@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { Header } from './components'
 
-export const App = () => {
+export const App:React.StatelessComponent<{}> = () => {
     return (
         <div>
-            HelloWorld!
+            <Header />
         </div>
     )
 }
