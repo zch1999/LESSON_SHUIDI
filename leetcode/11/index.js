@@ -4,7 +4,6 @@ var maxArea = function(height) {
     let ans = 0;
     while(left<right){
         ans = Math.max(ans,Math.min(height[left],height[right]) * (right-left))
-        console.log(ans)
         if(height[left]<height[right]){
             left++
         }else{
