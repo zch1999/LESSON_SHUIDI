@@ -3,11 +3,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 // import { HelloComponent } from './hello';
-import { App } from './app'
+import { AppRouter } from './router'
 
 const [name,setName] = React.useState('defaultUserName');
 
 ReactDOM.render(
-  <App />,
+  <AppRouter />,
   document.getElementById('root')
 )

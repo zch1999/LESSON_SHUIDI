@@ -1,15 +1,11 @@
 import * as React from 'react'
 import { HelloComponent } from './hello'
+import { Header } from './components'
 
 export const App = () => {
-    const [name,setName] = React.useState('initname')
-    const setUsernameState = (event: React.ChangeEvent<HTMLInputElement>) => {
-        
-    }
     return (
-        <>
-          <HelloComponent userName={name}/>
-          <NameEditComponent userName={name} onChange={setUsernameState}/>
-        </>
+        <div>
+          <Header />
+        </div>
     )
 }
