@@ -1,9 +1,14 @@
 Function.prototype.myBind = function(thisObj, ...args1){
     let fn = this
+    console.log(fn)
     function foo(...args2){
         const args = args1.concat(args2)
-        return fn.apply(thisObj,args)
+        let isNewCall = this instanceof foo;
+        console.log(this)
+      // isNewCall ? 实例 : thisObj
+      return fn.call(isNewCall ? this : thisObj, ...args);
     }
+    foo.prototype = fn.prototype;
     return foo
 }
 // function foo(a,b,c) {
@@ -23,11 +28,27 @@ function Animal(name, color) {
     return `I'm a ${this.color} ${this.name}`;
   };
   const Cat = Animal.myBind(null, 'cat');
-  console.log(Cat.prototype)
   const cat = new Cat('white');
-  // cat 
-  if (cat.say() === 'I\'m a white cat' &&
-    cat instanceof Cat && cat instanceof Animal) {
+  if (cat instanceof Animal) {
     console.log('success');
   }
+  // cat 
+  console.log(cat)
+  // console.log(cat.say())
+  // if (cat.say() === 'I\'m a white cat' && cat instanceof Cat && cat instanceof Animal) {
+  //   console.log('success');
+  // }
+  // cat.say() === 'I\'m a white cat' &&
 
+  
+  function foo(a){
+    // const args = args1.concat(args2)
+    console.log(this instanceof foo);
+    console.log(this)
+    this.a = a
+  // isNewCall ? 实例 : thisObj
+  // return fn.call(isNewCall ? this : thisObj, args);
+  }
+
+  let aaa = new foo('l')
+  console.log(aaa.a)
