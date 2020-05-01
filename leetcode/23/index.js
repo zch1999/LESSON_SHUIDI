@@ -26,3 +26,33 @@ var mergeKLists = function(lists) {
   }
   console.log(res.val)
 };
+
+// 递归
+var mergeKLists = function(lists) {
+    if(lists.length == 0){
+        return null
+    }else if(lists.length == 1){
+        return lists[0]
+    }else if(lists.length == 2){
+        return mergeTwoLists(lists[0],lists[1])
+    }else{
+        let middle = lists.length >> 1
+        let left = lists.slice(0,middle)
+        let right = lists.slice(middle)
+        return mergeTwoLists(mergeKLists(left),mergeKLists(right))
+    }
+}
+
+var mergeTwoLists = function(l1, l2) {
+  if(l1 == null){
+      return l2
+  }else if(l2 == null){
+      return l1
+  }else if(l1.val < l2.val){
+      l1.next = mergeTwoLists(l1.next, l2)
+      return l1
+  }else{
+      l2.next = mergeTwoLists(l1, l2.next)
+      return l2
+  }
+};
