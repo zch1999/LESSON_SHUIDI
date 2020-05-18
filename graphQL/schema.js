@@ -2,7 +2,8 @@
 import {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLSchema
+  GraphQLSchema,
+  GraphQLList
 } from 'graphql'
 
 
@@ -10,9 +11,20 @@ import {
 const QueryRootType = new GraphQLObjectType({
   name: 'QueryRoot',
   fields: {
+    id: {
+      type: GraphQLString
+    },
+    title: {
+      type: GraphQL
+    }
+  },
+  fields: {
     greeting: {
       type: GraphQLString,
       resolve: () => `hello ~`
+    },
+    posts: {
+      type: new GraphQLList()
     }
   }
 })

@@ -1,7 +1,7 @@
 // 新的接口
 // node 快速支持 import   ? 
 import express  from 'express';
-import graphqlHTTP from 'express-graphql';
+import graphqlHTTP from 'presexs-graphql';
 import schema from './schema'; // 模型定义文件
 
 
