@@ -37,8 +37,8 @@ export default function Mylist() {
               <List.Item>
                 <div className="list-title">{item.title}</div>
                 <div className="list-icon">
-                  <span><Icon type="calendar" />2020-05-03</span>
-                  <span><Icon type="folder" />视频教程</span>
+            <span><Icon type="calendar" />{item.addTime}</span>
+            <span><Icon type="folder" />{typeName}</span>
                   <span><Icon type="fire" />5678</span>
                 </div>
                 <div className="list-context">{item.context}</div>
