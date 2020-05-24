@@ -9,18 +9,17 @@ import MarkNav from 'markdown-navbar'
 import 'markdown-navbar/dist/navbar.css'
 import '../public/style/pages/detailed.css'
 import Axios from 'axios'
-
 import marked from 'marked'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/monokai-sublime.css'
-
 import Tocify from '../components/tocify.tsx'
+import servicePath from '../config/apiUrl' 
 
 Detailed.getInitialProps = async(context) => {
   // console.log(context.query.id)
   let id = context.query.id
   const promise = new Promise((resolve) => {
-    Axios('http://127.0.0.1:7001/default/getArticleById/' + id).then((res) => {
+    Axios(servicePath.getArticleById + id).then((res) => {
       // console.log(res)
       resolve(res.data.data[0])
     })
@@ -43,9 +42,13 @@ export default function Detailed(props) {
     pedantic: false,
     // 不忽略html标签
     sanitize: false,
+    //github样式
     tables: true,
+    //github换行符
     breaks: false,
+    //渲染列表
     smartLists: true,
+    //代码高亮
     highlight: function(code){
       return hljs.highlightAuto(code).value
     }

@@ -2,15 +2,38 @@ import React, {useState} from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Row, Col, List, Icon } from 'antd'
+import ReactMarkdown from 'react-markdown'
 import axios from 'axios'
 import Header from '../components/Header'
 import Author from '../components/Author'
 import Advert from '../components/Advert'
 import Footer from '../components/Footer'
 import '../public/style/pages/index.css'
+import servicePath from '../config/apiUrl' 
+import marked from 'marked'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/monokai-sublime.css'
+
 
 export default function Home(list) {
   const [mylist, setMylist] = useState(list.data)
+
+  const renderer = new marked.Renderer();
+  marked.setOptions({
+    renderer: renderer,
+    gfm: true,
+    pedantic: false,
+    sanitize: false,
+    tables: true,
+    breaks: false,
+    smartLists: true,
+    smartypants: false,
+    sanitize:false,
+    xhtml: false,
+    highlight: function (code) {
+            return hljs.highlightAuto(code).value;
+    }
+  }); 
   return (
     <div className="container">
       <Head>
@@ -32,11 +55,13 @@ export default function Home(list) {
                   </Link>
                   </div>
                 <div className="list-icon">
-            <span><Icon type="calendar" />{item.addTime}</span>
-            <span><Icon type="folder" />{item.typeName}</span>
-            <span><Icon type="fire" />{item.view_count}</span>
+                  <span><Icon type="calendar" />{item.addTime}</span>
+                  <span><Icon type="folder" />{item.typeName}</span>
+                  <span><Icon type="fire" />{item.view_count}</span>
                 </div>
-                <div className="list-context">{item.introduce}</div>
+                <div className="list-context"
+                  dangerouslySetInnerHTML={{__html:marked(item.introduce)}}>
+                </div>
               </List.Item>
             )}
             />
@@ -53,10 +78,10 @@ export default function Home(list) {
 
 Home.getInitialProps = async ()=> {
   const promise = new Promise((resolve) => {
-    axios('http://127.0.0.1:7001/default/getActicleList').then((res) => {
+    axios(servicePath.getArticleList).then((res) => {
       // console.log(res.data,'+++')
       resolve(res.data)
-      resolve(res.data.data[0])
+      // resolve(res.data.data[0])
     })
   })
   return await promise
