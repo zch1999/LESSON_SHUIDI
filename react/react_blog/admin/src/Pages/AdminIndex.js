@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import { Route } from 'react-router-dom'
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   DesktopOutlined,
@@ -9,6 +9,9 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import '../static/css/AdminIndex.css'
+import AddArticle from './AddArticle'
+
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -45,6 +48,9 @@ function AdminIndex() {
             <Breadcrumb.Item>工作台</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+            <div>
+              <Route path="/index/" exact component={AddArticle} />
+            </div>
             博客管理系统
           </div>
         </Content>
