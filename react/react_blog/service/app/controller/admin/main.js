@@ -97,6 +97,7 @@ class MainController extends Controller{
     'FROM article LEFT JOIN type ON article.type_id = type.Id '+
     'WHERE article.id='+id
     const result = await this.app.mysql.query(sql)
+    console.log(result)
     this.ctx.body={data:result}
   }
 

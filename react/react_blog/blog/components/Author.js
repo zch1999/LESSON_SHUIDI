@@ -8,9 +8,9 @@ const Author = () => {
       <div className="author-introduction">
         黑色的背后是黎明 以为来日方长所以别把梦吵醒 时间它继续飞行 下一站机场门外 拥抱你的背影
         <Divider>社交帐号</Divider>
-        <a href="http://image.jinghao.xyz/blog/20200519/BSLQAoAgMJua.jpeg"><Avatar size={38} icon="github" className="account" /></a>
-        <Avatar size={38} icon="qq" className="account" />
-        <Avatar size={38} icon="smile" className="account" />
+        <a href="http://github.com/zch1999" target="_blank"><Avatar size={38} icon="github" className="account" /></a>
+        <a href="" target="_blank"><Avatar size={38} icon="qq" className="account" /></a>
+        <a href="http://github.com/zch1999" target="_blank"><Avatar size={38} icon="smile" className="account" /></a>
       </div>
     </div>
   )
