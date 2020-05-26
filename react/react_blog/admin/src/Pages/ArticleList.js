@@ -3,7 +3,7 @@ import { List, Row, Col, Modal, message, Button } from 'antd'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
 import '../static/css/ArticleList.css'
-const { config } = Modal
+const { confirm } = Modal
 
 
 function ArticleList(props){
@@ -14,6 +14,7 @@ function ArticleList(props){
     getList()
   },[])
 
+  //获取文章列表
   const getList = () => {
     axios({
       method: 'get',
@@ -23,6 +24,31 @@ function ArticleList(props){
       setList(res.data.list)
     })
   }
+
+  //删除文章
+  const delArticle = (id) => {
+    console.log('shanchu')
+    confirm({
+      title: '确定要删除这篇文章吗？',
+      content: '如果你点击OK按钮,文章将被永久删除，无法恢复',
+      onOk(){
+        axios(servicePath.delArticle + id,{ withCredentials: true }).then(res => {
+          message.success('文章删除成功')
+          getList()
+        })
+      },
+      onCancel(){
+        message.success('取消操作成功')
+      }
+    })
+  }
+
+  //修改文章的跳转方法
+  const updateArticle = (id, checked) => {
+    props.history.push('/index/add/' + id)
+  }
+
+
   return (
       <div>
            <List
@@ -66,9 +92,9 @@ function ArticleList(props){
                           </Col>
 
                           <Col span={4}>
-                            <Button type="primary" >修改</Button>&nbsp;
+                            <Button type="primary" onClick={() => updateArticle(item.id)}>修改</Button>&nbsp;
 
-                            <Button >删除 </Button>
+                            <Button onClick={() => {delArticle(item.id)}}>删除 </Button>
                           </Col>
                       </Row>
 

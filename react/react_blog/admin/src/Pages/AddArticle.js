@@ -22,6 +22,12 @@ function AddArticle(props) {
 
   useEffect(() => {
     getTypeInfo()
+    //获取文章ID
+    let tmpId = props.match.params.id
+    if(tmpId){
+      setArticleId(tmpId)
+      getArticleById(tmpId)
+    }
   },[])
 
   const getTypeInfo =()=>{
@@ -139,9 +145,25 @@ function AddArticle(props) {
         }
       )
     }
+  }
 
-
-}
+  const getArticleById = (id) => {
+    axios(servicePath.getArticleById + id, {withCredentials: true}).then(
+      res => {
+        console.log(res)
+        let articleInfo = res.data.data[0]
+        setArticleTitle(articleInfo.title)
+        setArticleContent(articleInfo.article_content)
+        let html = marked(articleInfo.article_content)
+        setMarkdownContent(html)
+        setIntroducemd(articleInfo.introduce)
+        let tmpIntroduce = marked(articleInfo.introduce)
+        setIntroducehtml(tmpIntroduce)
+        setShowDate(articleInfo.addTime)
+        setSelectType(articleInfo.typeId)
+      }
+    )
+  }
 
   return (
     <div>
@@ -178,6 +200,7 @@ function AddArticle(props) {
                 className="markdown-content"
                 rows={35}
                 placeholder="文章内容"
+                value={articleContent}
                 onChange={changeContent}
               />
             </Col>
@@ -200,6 +223,7 @@ function AddArticle(props) {
               <TextArea 
                 rows={4}
                 placeholder="文章简介"
+                value={introducemd}
                 onChange={changeIntroduce}
               ></TextArea>
               <br /><br />
